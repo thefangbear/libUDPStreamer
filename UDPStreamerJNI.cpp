@@ -1,6 +1,6 @@
 #include <jni.h>
-#include <UDPStreamerJNI.h>
-#include <udp_streaming_lib.h>
+#include "UDPStreamerJNI.h"
+#include "udp_streaming_lib.h"
 /* native impl */
 
 JNIEXPORT void JNICALL Java_UDPStreamerJNI_native_1blocking_1receive
