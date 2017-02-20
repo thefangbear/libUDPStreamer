@@ -7,7 +7,6 @@
  */
 
 #include "Library.h"
-#include "UDPStreamerJNI.h"
 
 using namespace cv;
 using namespace std;
@@ -108,16 +107,4 @@ void native_send() {
     } catch (SocketException & e) {
         cerr << e.what() << endl;
     }
-}
-
-/* native impl */
-
-JNIEXPORT void JNICALL Java_UDPStreamerJNI_native_1blocking_1receive
-(JNIEnv *, jobject) {
-    native_blocking_receive();
-}
-
-JNIEXPORT void JNICALL Java_UDPStreamerJNI_native_1send
-(JNIEnv *, jobject) {
-    native_send();
 }
