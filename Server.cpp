@@ -28,6 +28,8 @@
 using namespace cv;
 #include "config.h"
 
+
+
 int main(int argc, char * argv[]) {
 
     if (argc != 2) { // Test for correct number of parameters

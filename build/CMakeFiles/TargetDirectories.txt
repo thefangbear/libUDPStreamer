@@ -1,0 +1,4 @@
+/Users/derros/Projects/udp-image-streaming/build/CMakeFiles/rebuild_cache.dir
+/Users/derros/Projects/udp-image-streaming/build/CMakeFiles/edit_cache.dir
+/Users/derros/Projects/udp-image-streaming/build/CMakeFiles/client.dir
+/Users/derros/Projects/udp-image-streaming/build/CMakeFiles/server.dir
