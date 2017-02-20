@@ -135,7 +135,7 @@ CMAKE_OSX_DEPLOYMENT_TARGET:STRING=
 CMAKE_OSX_SYSROOT:STRING=
 
 //Value Computed by CMake
-CMAKE_PROJECT_NAME:STATIC=lan_vid_pseudostream
+CMAKE_PROJECT_NAME:STATIC=jni_udp_streaming_lib
 
 //Path to a program.
 CMAKE_RANLIB:FILEPATH=/Library/Developer/CommandLineTools/usr/bin/ranlib
@@ -191,6 +191,15 @@ OpenCV_DIR:PATH=/usr/local/opt/opencv3/share/OpenCV
 
 //Path to a program.
 ProcessorCount_cmd_sysctl:FILEPATH=/usr/sbin/sysctl
+
+//Value Computed by CMake
+jni_udp_streaming_lib_BINARY_DIR:STATIC=/Users/derros/Projects/udp-image-streaming/cmake-build-debug
+
+//Dependencies for the target
+jni_udp_streaming_lib_LIB_DEPENDS:STATIC=general;opencv_calib3d;general;opencv_core;general;opencv_features2d;general;opencv_flann;general;opencv_highgui;general;opencv_imgcodecs;general;opencv_imgproc;general;opencv_ml;general;opencv_objdetect;general;opencv_photo;general;opencv_shape;general;opencv_stitching;general;opencv_superres;general;opencv_video;general;opencv_videoio;general;opencv_videostab;
+
+//Value Computed by CMake
+jni_udp_streaming_lib_SOURCE_DIR:STATIC=/Users/derros/Projects/udp-image-streaming
 
 //Value Computed by CMake
 lan_vid_pseudostream_BINARY_DIR:STATIC=/Users/derros/Projects/udp-image-streaming/cmake-build-debug

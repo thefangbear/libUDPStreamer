@@ -18,6 +18,8 @@
 #define SERVER_ADDRESS "localhost"
 #define CAMERA_NUMBER 0
 #define BUF_LEN 65540 // Larger than maximum UDP packet size
-
+vector < uchar > compress(Mat m);
+void native_blocking_receive();
+void native_send();
 
 #endif //LAN_VID_PSEUDOSTREAM_LIBRARY_H

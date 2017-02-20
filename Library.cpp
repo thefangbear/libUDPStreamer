@@ -12,7 +12,7 @@
 using namespace cv;
 using namespace std;
 
-vector < uchar > compress(Mat m) {
+vector<uchar> compress(Mat m) {
     int jpeg_quality = ENCODE_QUALITY;
 
     vector < uchar > encoded_image;
@@ -80,8 +80,6 @@ void native_blocking_receive() {
     }
 }
 
-
-
 void native_send() {
     string serverAddr = SERVER_ADDRESS;
     unsigned short serverPort = Socket::resolveService(SERVER_PORT, "udp");
@@ -111,3 +109,5 @@ void native_send() {
         cerr << e.what() << endl;
     }
 }
+
+

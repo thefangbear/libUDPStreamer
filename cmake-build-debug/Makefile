@@ -111,57 +111,44 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named client
+# Target rules for targets named jni_udp_streaming_lib
 
 # Build rule for target.
-client: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 client
-.PHONY : client
+jni_udp_streaming_lib: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 jni_udp_streaming_lib
+.PHONY : jni_udp_streaming_lib
 
 # fast build rule for target.
-client/fast:
-	$(MAKE) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/build
-.PHONY : client/fast
+jni_udp_streaming_lib/fast:
+	$(MAKE) -f CMakeFiles/jni_udp_streaming_lib.dir/build.make CMakeFiles/jni_udp_streaming_lib.dir/build
+.PHONY : jni_udp_streaming_lib/fast
 
-#=============================================================================
-# Target rules for targets named server
+Library.o: Library.cpp.o
 
-# Build rule for target.
-server: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 server
-.PHONY : server
-
-# fast build rule for target.
-server/fast:
-	$(MAKE) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/build
-.PHONY : server/fast
-
-Client.o: Client.cpp.o
-
-.PHONY : Client.o
+.PHONY : Library.o
 
 # target to build an object file
-Client.cpp.o:
-	$(MAKE) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/Client.cpp.o
-.PHONY : Client.cpp.o
+Library.cpp.o:
+	$(MAKE) -f CMakeFiles/jni_udp_streaming_lib.dir/build.make CMakeFiles/jni_udp_streaming_lib.dir/Library.cpp.o
+.PHONY : Library.cpp.o
 
-Client.i: Client.cpp.i
+Library.i: Library.cpp.i
 
-.PHONY : Client.i
+.PHONY : Library.i
 
 # target to preprocess a source file
-Client.cpp.i:
-	$(MAKE) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/Client.cpp.i
-.PHONY : Client.cpp.i
+Library.cpp.i:
+	$(MAKE) -f CMakeFiles/jni_udp_streaming_lib.dir/build.make CMakeFiles/jni_udp_streaming_lib.dir/Library.cpp.i
+.PHONY : Library.cpp.i
 
-Client.s: Client.cpp.s
+Library.s: Library.cpp.s
 
-.PHONY : Client.s
+.PHONY : Library.s
 
 # target to generate assembly for a file
-Client.cpp.s:
-	$(MAKE) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/Client.cpp.s
-.PHONY : Client.cpp.s
+Library.cpp.s:
+	$(MAKE) -f CMakeFiles/jni_udp_streaming_lib.dir/build.make CMakeFiles/jni_udp_streaming_lib.dir/Library.cpp.s
+.PHONY : Library.cpp.s
 
 PracticalSocket.o: PracticalSocket.cpp.o
 
@@ -169,8 +156,7 @@ PracticalSocket.o: PracticalSocket.cpp.o
 
 # target to build an object file
 PracticalSocket.cpp.o:
-	$(MAKE) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/PracticalSocket.cpp.o
-	$(MAKE) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/PracticalSocket.cpp.o
+	$(MAKE) -f CMakeFiles/jni_udp_streaming_lib.dir/build.make CMakeFiles/jni_udp_streaming_lib.dir/PracticalSocket.cpp.o
 .PHONY : PracticalSocket.cpp.o
 
 PracticalSocket.i: PracticalSocket.cpp.i
@@ -179,8 +165,7 @@ PracticalSocket.i: PracticalSocket.cpp.i
 
 # target to preprocess a source file
 PracticalSocket.cpp.i:
-	$(MAKE) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/PracticalSocket.cpp.i
-	$(MAKE) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/PracticalSocket.cpp.i
+	$(MAKE) -f CMakeFiles/jni_udp_streaming_lib.dir/build.make CMakeFiles/jni_udp_streaming_lib.dir/PracticalSocket.cpp.i
 .PHONY : PracticalSocket.cpp.i
 
 PracticalSocket.s: PracticalSocket.cpp.s
@@ -189,36 +174,8 @@ PracticalSocket.s: PracticalSocket.cpp.s
 
 # target to generate assembly for a file
 PracticalSocket.cpp.s:
-	$(MAKE) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/PracticalSocket.cpp.s
-	$(MAKE) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/PracticalSocket.cpp.s
+	$(MAKE) -f CMakeFiles/jni_udp_streaming_lib.dir/build.make CMakeFiles/jni_udp_streaming_lib.dir/PracticalSocket.cpp.s
 .PHONY : PracticalSocket.cpp.s
-
-Server.o: Server.cpp.o
-
-.PHONY : Server.o
-
-# target to build an object file
-Server.cpp.o:
-	$(MAKE) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/Server.cpp.o
-.PHONY : Server.cpp.o
-
-Server.i: Server.cpp.i
-
-.PHONY : Server.i
-
-# target to preprocess a source file
-Server.cpp.i:
-	$(MAKE) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/Server.cpp.i
-.PHONY : Server.cpp.i
-
-Server.s: Server.cpp.s
-
-.PHONY : Server.s
-
-# target to generate assembly for a file
-Server.cpp.s:
-	$(MAKE) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/Server.cpp.s
-.PHONY : Server.cpp.s
 
 # Help Target
 help:
@@ -228,17 +185,13 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
-	@echo "... client"
-	@echo "... server"
-	@echo "... Client.o"
-	@echo "... Client.i"
-	@echo "... Client.s"
+	@echo "... jni_udp_streaming_lib"
+	@echo "... Library.o"
+	@echo "... Library.i"
+	@echo "... Library.s"
 	@echo "... PracticalSocket.o"
 	@echo "... PracticalSocket.i"
 	@echo "... PracticalSocket.s"
-	@echo "... Server.o"
-	@echo "... Server.i"
-	@echo "... Server.s"
 .PHONY : help
 
 
