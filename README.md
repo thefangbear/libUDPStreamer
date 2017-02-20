@@ -1,3 +1,6 @@
+# JNI UDP Live Image Streaming Library
+This library is a fork of the UDP Live Image Streaming library by chenxiaoqino. The main() functions in Server.cpp and Client.cpp were combined into one library called Library.cpp, and a JNI wrapper is wrapped around it for use in Java code. This fork is mainly prepared for Abington Friends School's Roobotics Robotics Team's entry into the 2017 FIRST Robotics Competition.
+
 # UDP Live Image Streaming
 
 This project is inspired by https://www.cs.utexas.edu/~teammco/misc/udp_video/ , where images are grabbed from camera on one machine and transfered to another machine via UDP, resulting in negligible latency.
