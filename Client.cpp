@@ -34,7 +34,7 @@ void native_send() {
         VideoCapture camera( CAMERA_NUMBER );
         if(!camera.isOpened()) throw std::runtime_error("Camera is not opened.");
         // now stream a frame
-        cap >> frame;
+        camera >> frame;
         if(frame.size().width == 0) {} // integrity check (skip errors)
         // normalize our image
         resize(frame, send, Size(FRAME_WIDTH, FRAME_HEIGHT), 0, 0, INTER_LINEAR);

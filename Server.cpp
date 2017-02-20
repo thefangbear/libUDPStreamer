@@ -27,17 +27,9 @@
 #include "opencv2/opencv.hpp"
 using namespace cv;
 #include "config.h"
-
-
-
-int main(int argc, char * argv[]) {
-
-    if (argc != 2) { // Test for correct number of parameters
-        cerr << "Usage: " << argv[0] << " <Server Port>" << endl;
-        exit(1);
-    }
-
-    unsigned short servPort = atoi(argv[1]); // First arg:  local port
+#define SERVER_PORT "1111"
+void blocking_receive() {
+    unsigned short servPort = atoi( SERVER_PORT ); // First arg:  local port
 
     namedWindow("recv", CV_WINDOW_AUTOSIZE);
     try {
@@ -69,7 +61,7 @@ int main(int argc, char * argv[]) {
             }
 
             cout << "Received packet from " << sourceAddress << ":" << sourcePort << endl;
- 
+
             Mat rawData = Mat(1, PACK_SIZE * total_pack, CV_8UC1, longbuf);
             Mat frame = imdecode(rawData, CV_LOAD_IMAGE_COLOR);
             if (frame.size().width == 0) {
@@ -92,5 +84,4 @@ int main(int argc, char * argv[]) {
         exit(1);
     }
 
-    return 0;
 }
