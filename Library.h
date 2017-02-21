@@ -21,5 +21,5 @@
 vector < uchar > compress(cv::Mat m);
 void native_blocking_receive();
 void native_send();
-
+const unsigned char* native_byteMatSend();
 #endif //LAN_VID_PSEUDOSTREAM_LIBRARY_H

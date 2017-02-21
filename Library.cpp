@@ -143,3 +143,7 @@ const Mat native_Mat_send() {
     }
 }
 
+const unsigned char* native_byteMatSend() {
+    return toByteArray(native_Mat_send());
+}
+
