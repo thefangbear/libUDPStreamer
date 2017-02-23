@@ -6,5 +6,5 @@ CXX_FLAGS = -O3 -DNDEBUG -fPIC
 
 CXX_DEFINES = -Djni_udp_streaming_lib_EXPORTS
 
-CXX_INCLUDES = -I/Users/derros/Projects/udp-image-streaming/include -isystem /usr/local/Cellar/opencv3/3.2.0/include -isystem /usr/local/Cellar/opencv3/3.2.0/include/opencv 
+CXX_INCLUDES = -I/System/Library/Frameworks/JavaVM.framework/Headers -I/Users/derros/Projects/udp-image-streaming/include -isystem /usr/local/Cellar/opencv3/3.2.0/include -isystem /usr/local/Cellar/opencv3/3.2.0/include/opencv 
 

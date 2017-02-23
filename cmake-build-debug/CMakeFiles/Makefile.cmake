@@ -12,6 +12,7 @@ set(CMAKE_MAKEFILE_DEPENDS
   "/Applications/CLion.app/Contents/bin/cmake/share/cmake-3.6/Modules/CMakeCommonLanguageInclude.cmake"
   "/Applications/CLion.app/Contents/bin/cmake/share/cmake-3.6/Modules/CMakeExtraGeneratorDetermineCompilerMacrosAndIncludeDirs.cmake"
   "/Applications/CLion.app/Contents/bin/cmake/share/cmake-3.6/Modules/CMakeFindCodeBlocks.cmake"
+  "/Applications/CLion.app/Contents/bin/cmake/share/cmake-3.6/Modules/CMakeFindJavaCommon.cmake"
   "/Applications/CLion.app/Contents/bin/cmake/share/cmake-3.6/Modules/CMakeGenericSystem.cmake"
   "/Applications/CLion.app/Contents/bin/cmake/share/cmake-3.6/Modules/CMakeLanguageInformation.cmake"
   "/Applications/CLion.app/Contents/bin/cmake/share/cmake-3.6/Modules/CMakeParseArguments.cmake"
@@ -21,6 +22,7 @@ set(CMAKE_MAKEFILE_DEPENDS
   "/Applications/CLion.app/Contents/bin/cmake/share/cmake-3.6/Modules/Compiler/AppleClang-CXX.cmake"
   "/Applications/CLion.app/Contents/bin/cmake/share/cmake-3.6/Modules/Compiler/Clang.cmake"
   "/Applications/CLion.app/Contents/bin/cmake/share/cmake-3.6/Modules/Compiler/GNU.cmake"
+  "/Applications/CLion.app/Contents/bin/cmake/share/cmake-3.6/Modules/FindJNI.cmake"
   "/Applications/CLion.app/Contents/bin/cmake/share/cmake-3.6/Modules/FindPackageHandleStandardArgs.cmake"
   "/Applications/CLion.app/Contents/bin/cmake/share/cmake-3.6/Modules/FindPackageMessage.cmake"
   "/Applications/CLion.app/Contents/bin/cmake/share/cmake-3.6/Modules/Platform/Darwin-AppleClang-C.cmake"
@@ -55,5 +57,5 @@ set(CMAKE_MAKEFILE_PRODUCTS
 
 # Dependency information for all targets:
 set(CMAKE_DEPEND_INFO_FILES
-  "CMakeFiles/jni_udp_streaming_lib.dir/DependInfo.cmake"
+  "CMakeFiles/UDPStreamer.dir/DependInfo.cmake"
   )

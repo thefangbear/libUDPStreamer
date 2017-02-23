@@ -7,7 +7,7 @@ CMake Warning (dev):
 
   MACOSX_RPATH is not specified for the following targets:
 
-   jni_udp_streaming_lib
+   UDPStreamer
 
 This warning is for project developers.  Use -Wno-dev to suppress it.
 

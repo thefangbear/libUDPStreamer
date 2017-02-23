@@ -11,6 +11,7 @@ set(CMAKE_CXX_COMPILER_ID "Clang")
 
 # The include file search paths:
 set(CMAKE_CXX_TARGET_INCLUDE_PATH
+  "/System/Library/Frameworks/JavaVM.framework/Headers"
   "../include"
   "/usr/local/Cellar/opencv3/3.2.0/include"
   "/usr/local/Cellar/opencv3/3.2.0/include/opencv"

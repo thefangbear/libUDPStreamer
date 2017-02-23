@@ -44,6 +44,7 @@
 				<Option type="3"/>
 				<Option compiler="clang"/>
 				<Compiler>
+					<Add directory="/System/Library/Frameworks/JavaVM.framework/Headers"/>
 					<Add directory="/Users/derros/Projects/udp-image-streaming/include"/>
 					<Add directory="/usr/local/Cellar/opencv3/3.2.0/include"/>
 					<Add directory="/usr/local/Cellar/opencv3/3.2.0/include/opencv"/>
@@ -69,6 +70,7 @@
 				<Option type="3"/>
 				<Option compiler="clang"/>
 				<Compiler>
+					<Add directory="/System/Library/Frameworks/JavaVM.framework/Headers"/>
 					<Add directory="/Users/derros/Projects/udp-image-streaming/include"/>
 					<Add directory="/usr/local/Cellar/opencv3/3.2.0/include"/>
 					<Add directory="/usr/local/Cellar/opencv3/3.2.0/include/opencv"/>

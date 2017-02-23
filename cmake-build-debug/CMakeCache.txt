@@ -135,7 +135,7 @@ CMAKE_OSX_DEPLOYMENT_TARGET:STRING=
 CMAKE_OSX_SYSROOT:STRING=
 
 //Value Computed by CMake
-CMAKE_PROJECT_NAME:STATIC=jni_udp_streaming_lib
+CMAKE_PROJECT_NAME:STATIC=UDPStreamer
 
 //Path to a program.
 CMAKE_RANLIB:FILEPATH=/Library/Developer/CommandLineTools/usr/bin/ranlib
@@ -186,11 +186,35 @@ CMAKE_STRIP:FILEPATH=/Library/Developer/CommandLineTools/usr/bin/strip
 // Studio IDE projects all commands are done without /nologo.
 CMAKE_VERBOSE_MAKEFILE:BOOL=FALSE
 
+//Path to a file.
+JAVA_AWT_INCLUDE_PATH:PATH=/System/Library/Frameworks/JavaVM.framework/Headers
+
+//Path to a library.
+JAVA_AWT_LIBRARY:FILEPATH=/System/Library/Frameworks/JavaVM.framework
+
+//Path to a file.
+JAVA_INCLUDE_PATH:PATH=/System/Library/Frameworks/JavaVM.framework/Headers
+
+//Path to a file.
+JAVA_INCLUDE_PATH2:PATH=/System/Library/Frameworks/JavaVM.framework/Headers
+
+//Path to a library.
+JAVA_JVM_LIBRARY:FILEPATH=/System/Library/Frameworks/JavaVM.framework
+
 //The directory containing a CMake configuration file for OpenCV.
 OpenCV_DIR:PATH=/usr/local/opt/opencv3/share/OpenCV
 
 //Path to a program.
 ProcessorCount_cmd_sysctl:FILEPATH=/usr/sbin/sysctl
+
+//Value Computed by CMake
+UDPStreamer_BINARY_DIR:STATIC=/Users/derros/Projects/udp-image-streaming/cmake-build-debug
+
+//Dependencies for the target
+UDPStreamer_LIB_DEPENDS:STATIC=general;opencv_calib3d;general;opencv_core;general;opencv_features2d;general;opencv_flann;general;opencv_highgui;general;opencv_imgcodecs;general;opencv_imgproc;general;opencv_ml;general;opencv_objdetect;general;opencv_photo;general;opencv_shape;general;opencv_stitching;general;opencv_superres;general;opencv_video;general;opencv_videoio;general;opencv_videostab;
+
+//Value Computed by CMake
+UDPStreamer_SOURCE_DIR:STATIC=/Users/derros/Projects/udp-image-streaming
 
 //Value Computed by CMake
 jni_udp_streaming_lib_BINARY_DIR:STATIC=/Users/derros/Projects/udp-image-streaming/cmake-build-debug
@@ -345,8 +369,20 @@ CMAKE_STRIP-ADVANCED:INTERNAL=1
 CMAKE_UNAME:INTERNAL=/usr/local/opt/coreutils/libexec/gnubin/uname
 //ADVANCED property for variable: CMAKE_VERBOSE_MAKEFILE
 CMAKE_VERBOSE_MAKEFILE-ADVANCED:INTERNAL=1
+//Details about finding JNI
+FIND_PACKAGE_MESSAGE_DETAILS_JNI:INTERNAL=[/System/Library/Frameworks/JavaVM.framework][/System/Library/Frameworks/JavaVM.framework][/System/Library/Frameworks/JavaVM.framework/Headers][/System/Library/Frameworks/JavaVM.framework/Headers][/System/Library/Frameworks/JavaVM.framework/Headers][v()]
 //Details about finding OpenCV
 FIND_PACKAGE_MESSAGE_DETAILS_OpenCV:INTERNAL=[/usr/local/Cellar/opencv3/3.2.0][v3.2.0()]
+//ADVANCED property for variable: JAVA_AWT_INCLUDE_PATH
+JAVA_AWT_INCLUDE_PATH-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: JAVA_AWT_LIBRARY
+JAVA_AWT_LIBRARY-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: JAVA_INCLUDE_PATH
+JAVA_INCLUDE_PATH-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: JAVA_INCLUDE_PATH2
+JAVA_INCLUDE_PATH2-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: JAVA_JVM_LIBRARY
+JAVA_JVM_LIBRARY-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: ProcessorCount_cmd_sysctl
 ProcessorCount_cmd_sysctl-ADVANCED:INTERNAL=1
 

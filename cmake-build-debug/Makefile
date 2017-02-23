@@ -111,17 +111,17 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named jni_udp_streaming_lib
+# Target rules for targets named UDPStreamer
 
 # Build rule for target.
-jni_udp_streaming_lib: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 jni_udp_streaming_lib
-.PHONY : jni_udp_streaming_lib
+UDPStreamer: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 UDPStreamer
+.PHONY : UDPStreamer
 
 # fast build rule for target.
-jni_udp_streaming_lib/fast:
-	$(MAKE) -f CMakeFiles/jni_udp_streaming_lib.dir/build.make CMakeFiles/jni_udp_streaming_lib.dir/build
-.PHONY : jni_udp_streaming_lib/fast
+UDPStreamer/fast:
+	$(MAKE) -f CMakeFiles/UDPStreamer.dir/build.make CMakeFiles/UDPStreamer.dir/build
+.PHONY : UDPStreamer/fast
 
 Library.o: Library.cpp.o
 
@@ -129,7 +129,7 @@ Library.o: Library.cpp.o
 
 # target to build an object file
 Library.cpp.o:
-	$(MAKE) -f CMakeFiles/jni_udp_streaming_lib.dir/build.make CMakeFiles/jni_udp_streaming_lib.dir/Library.cpp.o
+	$(MAKE) -f CMakeFiles/UDPStreamer.dir/build.make CMakeFiles/UDPStreamer.dir/Library.cpp.o
 .PHONY : Library.cpp.o
 
 Library.i: Library.cpp.i
@@ -138,7 +138,7 @@ Library.i: Library.cpp.i
 
 # target to preprocess a source file
 Library.cpp.i:
-	$(MAKE) -f CMakeFiles/jni_udp_streaming_lib.dir/build.make CMakeFiles/jni_udp_streaming_lib.dir/Library.cpp.i
+	$(MAKE) -f CMakeFiles/UDPStreamer.dir/build.make CMakeFiles/UDPStreamer.dir/Library.cpp.i
 .PHONY : Library.cpp.i
 
 Library.s: Library.cpp.s
@@ -147,7 +147,7 @@ Library.s: Library.cpp.s
 
 # target to generate assembly for a file
 Library.cpp.s:
-	$(MAKE) -f CMakeFiles/jni_udp_streaming_lib.dir/build.make CMakeFiles/jni_udp_streaming_lib.dir/Library.cpp.s
+	$(MAKE) -f CMakeFiles/UDPStreamer.dir/build.make CMakeFiles/UDPStreamer.dir/Library.cpp.s
 .PHONY : Library.cpp.s
 
 PracticalSocket.o: PracticalSocket.cpp.o
@@ -156,7 +156,7 @@ PracticalSocket.o: PracticalSocket.cpp.o
 
 # target to build an object file
 PracticalSocket.cpp.o:
-	$(MAKE) -f CMakeFiles/jni_udp_streaming_lib.dir/build.make CMakeFiles/jni_udp_streaming_lib.dir/PracticalSocket.cpp.o
+	$(MAKE) -f CMakeFiles/UDPStreamer.dir/build.make CMakeFiles/UDPStreamer.dir/PracticalSocket.cpp.o
 .PHONY : PracticalSocket.cpp.o
 
 PracticalSocket.i: PracticalSocket.cpp.i
@@ -165,7 +165,7 @@ PracticalSocket.i: PracticalSocket.cpp.i
 
 # target to preprocess a source file
 PracticalSocket.cpp.i:
-	$(MAKE) -f CMakeFiles/jni_udp_streaming_lib.dir/build.make CMakeFiles/jni_udp_streaming_lib.dir/PracticalSocket.cpp.i
+	$(MAKE) -f CMakeFiles/UDPStreamer.dir/build.make CMakeFiles/UDPStreamer.dir/PracticalSocket.cpp.i
 .PHONY : PracticalSocket.cpp.i
 
 PracticalSocket.s: PracticalSocket.cpp.s
@@ -174,7 +174,7 @@ PracticalSocket.s: PracticalSocket.cpp.s
 
 # target to generate assembly for a file
 PracticalSocket.cpp.s:
-	$(MAKE) -f CMakeFiles/jni_udp_streaming_lib.dir/build.make CMakeFiles/jni_udp_streaming_lib.dir/PracticalSocket.cpp.s
+	$(MAKE) -f CMakeFiles/UDPStreamer.dir/build.make CMakeFiles/UDPStreamer.dir/PracticalSocket.cpp.s
 .PHONY : PracticalSocket.cpp.s
 
 # Help Target
@@ -185,7 +185,7 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
-	@echo "... jni_udp_streaming_lib"
+	@echo "... UDPStreamer"
 	@echo "... Library.o"
 	@echo "... Library.i"
 	@echo "... Library.s"
