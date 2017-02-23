@@ -10,7 +10,6 @@
 #define LAN_VID_PSEUDOSTREAM_LIBRARY_H
 //========= INCLUDE ==============
 #include "opencv2/opencv.hpp"
-#include "config.h"
 #include "PracticalSocket.h" // For UDPSocket and SocketException
 #include "java/in_derros_jni_UDPStreamer.h"
 #include <iostream>          // For cout and cerr
