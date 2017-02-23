@@ -159,14 +159,13 @@ const unsigned char* native_byteMatSend() {
  */
 JNIEXPORT jbyteArray JNICALL Java_in_derros_jni_UDPStreamer__1n_1grabFrame // TODO TODO TODO IMPLEMENT
         (JNIEnv *env, jobject obj) {
-    const unsigned char* __c_ptr = native_byteMatSend();
-    jbyteArray __ba = env->NewByteArray(3);
-    std::vector<unsigned char> __c_vec(3);
-    __c_vec[0] = 0;
-    __c_vec[1] = 1;
-    __c_vec[2] = 1;
-    unsigned char * __c_ptr = __c_vec.data();
-    env->SetByteArrayRegion (__ba, 0, 3, reinterpret_cast<jbyte*>(__c_ptr));
+    Mat m = native_Mat_send();
+    int rows = m.rows;
+    int cols = m.cols;
+    int num_el = rows*cols;
+    int len = num_el*m.elemSize1();
+    jbyteArray __ba = env->NewByteArray(len);
+    env->SetByteArrayRegion (__ba, 0, len, reinterpret_cast<jbyte*>(m.data));
     return __ba;
 }
 
