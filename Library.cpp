@@ -108,3 +108,42 @@ void native_send() {
         cerr << e.what() << endl;
     }
 }
+
+const unsigned char* toByteArray(const Mat& m) {
+    return m.data;
+}
+
+const Mat native_Mat_send() {
+    string serverAddr = SERVER_ADDRESS;
+    unsigned short serverPort = Socket::resolveService(SERVER_PORT, "udp");
+    try {
+        UDPSocket sock;
+        Mat frame, send;
+        VideoCapture camera( CAMERA_NUMBER );
+        if(!camera.isOpened()) throw std::runtime_error("Camera is not opened.");
+        // now stream a frame
+        camera >> frame;
+        if(frame.size().width == 0) {} // integrity check (skip errors)
+        // normalize our image
+        resize(frame, send, Size(FRAME_WIDTH, FRAME_HEIGHT), 0, 0, INTER_LINEAR);
+        // set compression
+        vector < uchar > encoded = compress(send);
+        // calculate packet size
+        int total_pack = 1 + (encoded.size() - 1) / PACK_SIZE;
+        // send packet size
+        int ibuf[1];
+        ibuf[0] = total_pack;
+        sock.sendTo(ibuf, sizeof(int), serverAddr, serverPort);
+        // send fragmentations
+        for (int i = 0; i < total_pack; i++)
+            sock.sendTo( & encoded[i * PACK_SIZE], PACK_SIZE, serverAddr, serverPort);
+        return frame;
+    } catch (SocketException & e) {
+        cerr << e.what() << endl;
+    }
+}
+
+const unsigned char* native_byteMatSend() {
+    return toByteArray(native_Mat_send());
+}
+
