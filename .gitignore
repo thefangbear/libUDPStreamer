@@ -1,1 +1,6 @@
 cmake-build-debug/
+build/
+*.class
+*.dylib
+*.so
+
