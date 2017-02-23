@@ -163,7 +163,7 @@ JNIEXPORT jbyteArray JNICALL Java_in_derros_jni_UDPStreamer__1n_1grabFrame // TO
     int rows = m.rows;
     int cols = m.cols;
     int num_el = rows*cols;
-    int len = num_el*m.elemSize1();
+    unsigned int len = num_el*m.elemSize1();
     jbyteArray __ba = env->NewByteArray(len);
     env->SetByteArrayRegion (__ba, 0, len, reinterpret_cast<jbyte*>(m.data));
     return __ba;
