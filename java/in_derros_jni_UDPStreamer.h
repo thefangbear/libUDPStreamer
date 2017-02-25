@@ -9,26 +9,82 @@ extern "C" {
 #endif
 /*
  * Class:     in_derros_jni_UDPStreamer
- * Method:    _n_grabFrame
+ * Method:    _n_initialize
+ * Signature: (I)V
+ */
+JNIEXPORT void JNICALL Java_in_derros_jni_UDPStreamer__1n_1initialize
+  (JNIEnv *, jobject, jint);
+
+/*
+ * Class:     in_derros_jni_UDPStreamer
+ * Method:    _n_init_client
+ * Signature: (Ljava/lang/String;SIIII)V
+ */
+JNIEXPORT void JNICALL Java_in_derros_jni_UDPStreamer__1n_1init_1client
+  (JNIEnv *, jobject, jstring, jshort, jint, jint, jint, jint);
+
+/*
+ * Class:     in_derros_jni_UDPStreamer
+ * Method:    _n_init_server
+ * Signature: (S)V
+ */
+JNIEXPORT void JNICALL Java_in_derros_jni_UDPStreamer__1n_1init_1server
+  (JNIEnv *, jobject, jshort);
+
+/*
+ * Class:     in_derros_jni_UDPStreamer
+ * Method:    _n_close
+ * Signature: (I)V
+ */
+JNIEXPORT void JNICALL Java_in_derros_jni_UDPStreamer__1n_1close
+  (JNIEnv *, jobject, jint);
+
+/*
+ * Class:     in_derros_jni_UDPStreamer
+ * Method:    _n_Client_grabFrame
  * Signature: ()[B
  */
-JNIEXPORT jbyteArray JNICALL Java_in_derros_jni_UDPStreamer__1n_1grabFrame
+JNIEXPORT jbyteArray JNICALL Java_in_derros_jni_UDPStreamer__1n_1Client_1grabFrame
   (JNIEnv *, jobject);
 
 /*
  * Class:     in_derros_jni_UDPStreamer
- * Method:    _n_sendFrame
- * Signature: ()V
+ * Method:    _n_Client_streamFrame
+ * Signature: ()[B
  */
-JNIEXPORT void JNICALL Java_in_derros_jni_UDPStreamer__1n_1sendFrame
+JNIEXPORT jbyteArray JNICALL Java_in_derros_jni_UDPStreamer__1n_1Client_1streamFrame
   (JNIEnv *, jobject);
 
 /*
  * Class:     in_derros_jni_UDPStreamer
- * Method:    _n_showFrame_blocking
+ * Method:    _n_Client_sendFrame
  * Signature: ()V
  */
-JNIEXPORT void JNICALL Java_in_derros_jni_UDPStreamer__1n_1showFrame_1blocking
+JNIEXPORT void JNICALL Java_in_derros_jni_UDPStreamer__1n_1Client_1sendFrame
+  (JNIEnv *, jobject);
+
+/*
+ * Class:     in_derros_jni_UDPStreamer
+ * Method:    _n_Client_sendCustomFrame
+ * Signature: ([B)V
+ */
+JNIEXPORT void JNICALL Java_in_derros_jni_UDPStreamer__1n_1Client_1sendCustomFrame
+  (JNIEnv *, jobject, jbyteArray);
+
+/*
+ * Class:     in_derros_jni_UDPStreamer
+ * Method:    _n_Server_showFrame_blocking
+ * Signature: ()V
+ */
+JNIEXPORT void JNICALL Java_in_derros_jni_UDPStreamer__1n_1Server_1showFrame_1blocking
+  (JNIEnv *, jobject);
+
+/*
+ * Class:     in_derros_jni_UDPStreamer
+ * Method:    _n_Server_retrieveFrame
+ * Signature: ()[B
+ */
+JNIEXPORT jbyteArray JNICALL Java_in_derros_jni_UDPStreamer__1n_1Server_1retrieveFrame
   (JNIEnv *, jobject);
 
 #ifdef __cplusplus
