@@ -73,6 +73,38 @@ JNIEXPORT void JNICALL Java_in_derros_jni_UDPStreamer__1n_1Client_1sendCustomFra
 
 /*
  * Class:     in_derros_jni_UDPStreamer
+ * Method:    _n_Client_writeFrame
+ * Signature: (Ljava/lang/String;)V
+ */
+JNIEXPORT void JNICALL Java_in_derros_jni_UDPStreamer__1n_1Client_1writeFrame
+  (JNIEnv *, jobject, jstring);
+
+/*
+ * Class:     in_derros_jni_UDPStreamer
+ * Method:    _n_Client_writeAndSend
+ * Signature: (Ljava/lang/String;)V
+ */
+JNIEXPORT void JNICALL Java_in_derros_jni_UDPStreamer__1n_1Client_1writeAndSend
+  (JNIEnv *, jobject, jstring);
+
+/*
+ * Class:     in_derros_jni_UDPStreamer
+ * Method:    _n_Client_writeCustomFrame
+ * Signature: (Ljava/lang/String;[B)V
+ */
+JNIEXPORT void JNICALL Java_in_derros_jni_UDPStreamer__1n_1Client_1writeCustomFrame
+  (JNIEnv *, jobject, jstring, jbyteArray);
+
+/*
+ * Class:     in_derros_jni_UDPStreamer
+ * Method:    _n_Client_writeAndSendCustom
+ * Signature: (Ljava/lang/String;[B)V
+ */
+JNIEXPORT void JNICALL Java_in_derros_jni_UDPStreamer__1n_1Client_1writeAndSendCustom
+  (JNIEnv *, jobject, jstring, jbyteArray);
+
+/*
+ * Class:     in_derros_jni_UDPStreamer
  * Method:    _n_Server_showFrame_blocking
  * Signature: ()V
  */
@@ -86,6 +118,22 @@ JNIEXPORT void JNICALL Java_in_derros_jni_UDPStreamer__1n_1Server_1showFrame_1bl
  */
 JNIEXPORT jbyteArray JNICALL Java_in_derros_jni_UDPStreamer__1n_1Server_1retrieveFrame
   (JNIEnv *, jobject);
+
+/*
+ * Class:     in_derros_jni_UDPStreamer
+ * Method:    _n_Server_writeRetrivedFrame
+ * Signature: (Ljava/lang/String;)V
+ */
+JNIEXPORT void JNICALL Java_in_derros_jni_UDPStreamer__1n_1Server_1writeRetrivedFrame
+  (JNIEnv *, jobject, jstring);
+
+/*
+ * Class:     in_derros_jni_UDPStreamer
+ * Method:    _n_Server_showAndWriteFrame
+ * Signature: (Ljava/lang/String;)V
+ */
+JNIEXPORT void JNICALL Java_in_derros_jni_UDPStreamer__1n_1Server_1showAndWriteFrame
+  (JNIEnv *, jobject, jstring);
 
 #ifdef __cplusplus
 }
