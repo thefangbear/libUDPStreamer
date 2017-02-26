@@ -25,14 +25,20 @@
 
 //========= NETWRK ===============
 #define SERVER_PORT "1111"
+#define CLIENT_PORT "33840"
 #define SHORT_SERVER_PORT 1111
-#define SERVER_ADDRESS "localhost"
+
+#define SHORT_CLIENT_PORT 88
+#define SERVER_ADDRESS "192.168.1.213"
+
+//#define SERVER_ADDRESS "localhost"
+
 #define CAMERA_NUMBER 0
 #define BUF_LEN 65540 // Larger than maximum UDP packet size
 
 enum {
     // default settings
-    eDefaultCameraNumber = 0,
+            eDefaultCameraNumber = 0,
     eDefaultFrameWidth = 1280,
     eDefaultFrameHeight = 720,
     ePacketSize = 4096,
@@ -47,6 +53,8 @@ public:
     cv::Mat Receive();
     void    Show(cv::Mat& m);
     void    ShowReceiveBlocking();
+    void    WriteStreamedFrame(std::string path);
+    void    ShowAndWrite(std::string path);
 private:
     char buffer[ BUF_LEN ]; // Buffer for echo string
     int recvMsgSize; // Size of received message
@@ -61,6 +69,8 @@ public:
     vector<unsigned char> Send(cv::Mat& m);
     void Send(vector<unsigned char>& m);
     cv::Mat Capture();
+    void Write(std::string, cv::Mat& frame);
+    void WriteAndSend(std::string, cv::Mat& frame);
 
 private:
     std::string destAddr;
@@ -71,6 +81,12 @@ private:
     int imageW;
     int imageH;
     std::vector<unsigned char> compress(cv::Mat m);
+
+    void Write(string path, vector<unsigned char> v);
+
+    void WriteAndSend(string path);
+
+    void WriteAndSend(string path, vector<unsigned char> v);
 };
 
 #endif // UDPSTREAMER_H

@@ -47,11 +47,19 @@ void Server::Show(Mat &m) {
     imshow("server image window", m);
 }
 
+void debug(string s) { cout << s << endl; }
+
 void Server::ShowReceiveBlocking() {
-    unsigned short servPort = atoi(SERVER_PORT); // First arg:  local port
+
+    cout << "Entered ShowReceiveBlocking()\n";
+
+    unsigned short servPort = SHORT_CLIENT_PORT; // First arg:  local port
 
     namedWindow("recv", CV_WINDOW_AUTOSIZE);
     try {
+
+        debug("inside try");
+
         UDPSocket sock(servPort);
 
         char buffer[BUF_LEN]; // Buffer for echo string
@@ -65,10 +73,15 @@ void Server::ShowReceiveBlocking() {
 #pragma clang diagnostic ignored "-Wmissing-noreturn"
         while (1) {
             // Block until receive message from a client
+
+            debug("inside while");
+
             do {
                 recvMsgSize = sock.recvFrom(buffer, BUF_LEN, sourceAddress, sourcePort);
             } while (recvMsgSize > sizeof(int));
             int total_pack = ((int *) buffer)[0];
+
+            debug("received total_pack");
 
             cout << "expecting length of packs:" << total_pack << endl;
             char *longbuf = new char[PACK_SIZE * total_pack];
@@ -106,6 +119,17 @@ void Server::ShowReceiveBlocking() {
         cerr << e.what() << endl;
         exit(1);
     }
+}
+
+void Server::WriteStreamedFrame(std::string path) {
+    Mat m = this->Receive();
+    imwrite(path, m);
+}
+
+void Server::ShowAndWrite(std::string path) {
+    Mat m = this->Receive();
+    imwrite(path, m);
+    this->Show(m);
 }
 
 Client::Client(std::string server, unsigned short port, int cameraNumber, int imageQuality, int imageW, int imageH)
@@ -207,6 +231,28 @@ Mat Client::Capture() {
     v >> frame;
     if (frame.size().width == 0); // integrity check (skip errors)
     return frame;
+}
+
+void Client::Write(string path, cv::Mat& frame) {
+    imwrite(path, frame);
+}
+
+void Client::Write(string path, vector<unsigned char> v) {
+    ofstream out(path.data(), ios::out | ios::binary);
+    const char *p = reinterpret_cast<const char *>(v.data());
+    out.write(p, v.size() * sizeof(char));
+}
+
+void Client::WriteAndSend(string path, cv::Mat& frame) {
+    imwrite(path, frame);
+    this->Send(frame);
+}
+
+void Client::WriteAndSend(string path, vector<unsigned char> v) {
+    ofstream out(path.data(), ios::out | ios::binary);
+    const char *p = reinterpret_cast<const char *>(v.data());
+    out.write(p, v.size() * sizeof(char));
+    this->Send(v);
 }
 
 /*
