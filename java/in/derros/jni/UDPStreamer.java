@@ -151,14 +151,5 @@ public class UDPStreamer {
     }
 
 
-    //=======TESTER=============
-    //
-    public static void main(String[] args) {
-        UDPStreamer streamer =
-                new UDPStreamer(
-                        "/home/alex/Projects/test-img-streaming/client/build/libUDPStreamer.so",
-                        "client");
-        // TODO test
-    }
 
 }
