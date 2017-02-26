@@ -136,7 +136,7 @@ Server::~Server() {
 
     this->serverSocket.disconnect();
     this->serverSocket.cleanUp();
-    this->serverSocket.~Socket();
+    // this->serverSocket.~Socket(); commented out for osx compatibility
 
 }
 
@@ -270,7 +270,7 @@ void Client::WriteAndSend(string path, vector<unsigned char> v) {
 Client::~Client() {
     this->clientSocket.disconnect();
     this->clientSocket.cleanUp();
-    this->clientSocket.~Socket();
+    //this->clientSocket.~Socket(); // commented out for osx compatibility
 }
 
 void Client::Close() {
