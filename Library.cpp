@@ -461,7 +461,7 @@ JNIEXPORT void JNICALL Java_in_derros_jni_UDPStreamer__1n_1Client_1writeCustomFr
     jbyte *b = (jbyte *) env->GetByteArrayElements(__j_ba, NULL);
     vector<unsigned char> img(len);
     for(unsigned int i = 0; i < len; i ++) {
-        img[i] = reinterpret_cast<unsigned char>(b[i]);
+        img[i] = (unsigned char)(b[i]); // reinterpret_cast won't work, converts a signed to unsigned
     }
     __n_client_global->Write(path, img);
 }
@@ -478,7 +478,7 @@ JNIEXPORT void JNICALL Java_in_derros_jni_UDPStreamer__1n_1Client_1writeAndSendC
     jbyte *b = (jbyte *) env->GetByteArrayElements(__j_ba, NULL);
     vector<unsigned char> img(len);
     for(unsigned int i = 0; i < len; i ++) {
-        img[i] = reinterpret_cast<unsigned char>(b[i]);
+        img[i] = (unsigned char)(b[i]); // reinterpret_cast won't work, converts a signed to unsigned
     }
     __n_client_global->WriteAndSend(path, img);
 }
