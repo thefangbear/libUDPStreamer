@@ -50,11 +50,13 @@ void initialize(int);
 class Server {
 public:
     Server(unsigned short);
+    ~Server();
     cv::Mat Receive();
     void    Show(cv::Mat& m);
     void    ShowReceiveBlocking();
     void    WriteStreamedFrame(std::string path);
     void    ShowAndWrite(std::string path);
+    void    Close();
 private:
     char buffer[ BUF_LEN ]; // Buffer for echo string
     int recvMsgSize; // Size of received message
@@ -65,6 +67,7 @@ private:
 class Client {
 public:
     Client(std::string, unsigned short, int, int, int, int);
+    ~Client();
     cv::Mat Send();
     vector<unsigned char> Send(cv::Mat& m);
     void Send(vector<unsigned char>& m);
@@ -73,6 +76,7 @@ public:
     void Write(string path, vector<unsigned char> v);
     void WriteAndSend(std::string, cv::Mat& frame);
     void WriteAndSend(string path, vector<unsigned char> v);
+    void Close();
 private:
     std::string destAddr;
     unsigned short destPort;
