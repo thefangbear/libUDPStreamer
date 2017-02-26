@@ -132,6 +132,18 @@ void Server::ShowAndWrite(std::string path) {
     this->Show(m);
 }
 
+Server::~Server() {
+
+    this->serverSocket.disconnect();
+    this->serverSocket.cleanUp();
+    this->serverSocket.~Socket();
+
+}
+
+void Server::Close() {
+    this->~Server();
+}
+
 Client::Client(std::string server, unsigned short port, int cameraNumber, int imageQuality, int imageW, int imageH)
         : destAddr(server),
           destPort(port),
@@ -255,6 +267,16 @@ void Client::WriteAndSend(string path, vector<unsigned char> v) {
     this->Send(v);
 }
 
+Client::~Client() {
+    this->clientSocket.disconnect();
+    this->clientSocket.cleanUp();
+    this->clientSocket.~Socket();
+}
+
+void Client::Close() {
+    this->~Client();
+}
+
 /*
  * ===================== IMPLEMENTATIONS ===========================
  */
@@ -323,6 +345,8 @@ JNIEXPORT void JNICALL Java_in_derros_jni_UDPStreamer__1n_1init_1server
  */
 JNIEXPORT void JNICALL Java_in_derros_jni_UDPStreamer__1n_1close
         (JNIEnv *env, jobject obj, jint _j_mode) {
+    __n_client_global->Close();
+    __n_server_global->Close();
     delete __n_client_global;
     delete __n_server_global;
 }
@@ -461,7 +485,7 @@ JNIEXPORT void JNICALL Java_in_derros_jni_UDPStreamer__1n_1Client_1writeCustomFr
     jbyte *b = (jbyte *) env->GetByteArrayElements(__j_ba, NULL);
     vector<unsigned char> img(len);
     for(unsigned int i = 0; i < len; i ++) {
-        img[i] = reinterpret_cast<unsigned char>(b[i]);
+        img[i] = (unsigned char)(b[i]); // reinterpret_cast won't work, converts a signed to unsigned
     }
     __n_client_global->Write(path, img);
 }
@@ -478,7 +502,7 @@ JNIEXPORT void JNICALL Java_in_derros_jni_UDPStreamer__1n_1Client_1writeAndSendC
     jbyte *b = (jbyte *) env->GetByteArrayElements(__j_ba, NULL);
     vector<unsigned char> img(len);
     for(unsigned int i = 0; i < len; i ++) {
-        img[i] = reinterpret_cast<unsigned char>(b[i]);
+        img[i] = (unsigned char)(b[i]); // reinterpret_cast won't work, converts a signed to unsigned
     }
     __n_client_global->WriteAndSend(path, img);
 }
