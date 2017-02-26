@@ -70,8 +70,9 @@ public:
     void Send(vector<unsigned char>& m);
     cv::Mat Capture();
     void Write(std::string, cv::Mat& frame);
+    void Write(string path, vector<unsigned char> v);
     void WriteAndSend(std::string, cv::Mat& frame);
-
+    void WriteAndSend(string path, vector<unsigned char> v);
 private:
     std::string destAddr;
     unsigned short destPort;
@@ -82,11 +83,6 @@ private:
     int imageH;
     std::vector<unsigned char> compress(cv::Mat m);
 
-    void Write(string path, vector<unsigned char> v);
-
-    void WriteAndSend(string path);
-
-    void WriteAndSend(string path, vector<unsigned char> v);
 };
 
 #endif // UDPSTREAMER_H

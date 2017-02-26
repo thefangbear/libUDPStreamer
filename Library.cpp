@@ -427,3 +427,80 @@ JNIEXPORT jbyteArray JNICALL Java_in_derros_jni_UDPStreamer__1n_1Server_1retriev
     return __ba;
 }
 
+/*
+ * Class:     in_derros_jni_UDPStreamer
+ * Method:    _n_Client_writeFrame
+ * Signature: (Ljava/lang/String;)V
+ */
+JNIEXPORT void JNICALL Java_in_derros_jni_UDPStreamer__1n_1Client_1writeFrame
+        (JNIEnv *env, jobject obj, jstring __j_str) {
+    string path(reinterpret_cast<const char *>(__j_str));
+    __n_client_global->Write(path, __n_client_global->Capture());
+}
+
+/*
+ * Class:     in_derros_jni_UDPStreamer
+ * Method:    _n_Client_writeAndSend
+ * Signature: (Ljava/lang/String;)V
+ */
+JNIEXPORT void JNICALL Java_in_derros_jni_UDPStreamer__1n_1Client_1writeAndSend
+        (JNIEnv *env, jobject obj, jstring __j_str) {
+    string path(reinterpret_cast<const char *>(__j_str));
+    __n_client_global->WriteAndSend(path, __n_client_global->Capture());
+}
+
+/*
+ * Class:     in_derros_jni_UDPStreamer
+ * Method:    _n_Client_writeCustomFrame
+ * Signature: (Ljava/lang/String;[B)V
+ */
+JNIEXPORT void JNICALL Java_in_derros_jni_UDPStreamer__1n_1Client_1writeCustomFrame
+        (JNIEnv *env, jobject obj, jstring __j_str, jbyteArray __j_ba) {
+    string path(reinterpret_cast<const char *>(__j_str));
+    unsigned int len = (unsigned int) env->GetArrayLength((jarray) __j_ba);
+    jbyte *b = (jbyte *) env->GetByteArrayElements(__j_ba, NULL);
+    vector<unsigned char> img(len);
+    for(unsigned int i = 0; i < len; i ++) {
+        img[i] = reinterpret_cast<unsigned char>(b[i]);
+    }
+    __n_client_global->Write(path, img);
+}
+
+/*
+ * Class:     in_derros_jni_UDPStreamer
+ * Method:    _n_Client_writeAndSendCustom
+ * Signature: (Ljava/lang/String;[B)V
+ */
+JNIEXPORT void JNICALL Java_in_derros_jni_UDPStreamer__1n_1Client_1writeAndSendCustom
+        (JNIEnv *env, jobject obj, jstring __j_str, jbyteArray __j_ba) {
+    string path(reinterpret_cast<const char *>(__j_str));
+    unsigned int len = (unsigned int) env->GetArrayLength((jarray) __j_ba);
+    jbyte *b = (jbyte *) env->GetByteArrayElements(__j_ba, NULL);
+    vector<unsigned char> img(len);
+    for(unsigned int i = 0; i < len; i ++) {
+        img[i] = reinterpret_cast<unsigned char>(b[i]);
+    }
+    __n_client_global->WriteAndSend(path, img);
+}
+
+/*
+ * Class:     in_derros_jni_UDPStreamer
+ * Method:    _n_Server_writeRetrivedFrame
+ * Signature: (Ljava/lang/String;)V
+ */
+JNIEXPORT void JNICALL Java_in_derros_jni_UDPStreamer__1n_1Server_1writeRetrivedFrame
+        (JNIEnv *env, jobject obj, jstring __j_str) {
+    string path(reinterpret_cast<const char *>(__j_str));
+    __n_server_global->WriteStreamedFrame(path);
+}
+
+/*
+ * Class:     in_derros_jni_UDPStreamer
+ * Method:    _n_Server_showAndWriteFrame
+ * Signature: (Ljava/lang/String;)V
+ */
+JNIEXPORT void JNICALL Java_in_derros_jni_UDPStreamer__1n_1Server_1showAndWriteFrame
+        (JNIEnv *env, jobject obj, jstring __j_str) {
+    string path(reinterpret_cast<const char *>(__j_str));
+    __n_server_global->ShowAndWrite(path);
+}
