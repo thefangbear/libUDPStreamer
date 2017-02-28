@@ -110,13 +110,41 @@ public class UDPStreamer {
                        int encodeQuality,
                        int frameWidth,
                        int frameHeight) {
+        System.load(lp);
         _n_init_client(serverAddress, serverPort, cameraNumber, encodeQuality, frameWidth, frameHeight);
     }
 
     public UDPStreamer(String lp, short portOfThisServer) {
+        System.load(lp);
         _n_init_server(portOfThisServer);
     }
 
+    public UDPStreamer(String libraryName, String mode, boolean useSystemLibraryPath=true) {
+        System.loadLibrary(libraryName);
+        if (mode.equals("client")) {
+            this.mode = 0;
+        } else {
+            this.mode = 1;
+        }
+        _n_initialize(this.mode);
+    }
+
+    public UDPStreamer(String libraryName,
+                       String serverAddress,
+                       short serverPort,
+                       int cameraNumber,
+                       int encodeQuality,
+                       int frameWidth,
+                       int frameHeight,
+                       boolean useSystemLibraryPath=true) {
+        System.loadLibrary(libraryName);
+        _n_init_client(serverAddress, serverPort, cameraNumber, encodeQuality, frameWidth, frameHeight);
+    }
+
+    public UDPStreamer(String libraryName, short portOfThisServer, boolean useSystemLibraryPath=true) {
+        System.loadLibrary(libraryName);
+        _n_init_server(portOfThisServer);
+    }
 
     public void close() {
         _n_close(this.mode);
