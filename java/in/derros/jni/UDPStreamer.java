@@ -136,7 +136,7 @@ public class UDPStreamer {
                        int encodeQuality,
                        int frameWidth,
                        int frameHeight,
-                       boolean useSystemLibraryPath=true) {
+                       boolean useSystemLibraryPath) {
         System.loadLibrary(libraryName);
         _n_init_client(serverAddress, serverPort, cameraNumber, encodeQuality, frameWidth, frameHeight);
     }
