@@ -4,6 +4,10 @@ This library is a fork of the UDP Live Image Streaming library by chenxiaoqino. 
 ## Documentation
 Please read our excellent [Java API Documentation and tutorial](https://github.com/thefangbear/udp-img-lib/wiki/Java-API-Documentation).
 
+## Release
+
+A Maven release is available (Thanks to Roobotics) at https://github.com/Roobotics-FRC/RooMaven. The current version is 0.2.1.
+
 ## Author
 The library is originally written by [chenxiaoqino](//github.com/chenxiaoqino) but later revised to add JNI, multiple new classes, and restructured by Alex Fang.
 
