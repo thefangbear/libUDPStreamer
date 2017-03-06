@@ -51,7 +51,12 @@ vector<unsigned char> LZ4Compress::Decompress(unsigned int originalSize) {
 
 Server::Server(unsigned short serverPort)
         : serverPort(serverPort), serverSocket(serverPort) {}
-
+/*todo
+cv::Mat Server::decompress(std::vector<unsigned char> compressedData, int originalSize) {
+    LZ4Compress c(compressedData);
+    vector<unsigned char> c.Decompress(originalSize);
+}
+*/
 Mat Server::Receive() {
     string sourceAddress;
     unsigned short sourcePort;
