@@ -119,7 +119,7 @@ public class UDPStreamer {
         _n_init_server(portOfThisServer);
     }
 
-    public UDPStreamer(String libraryName, String mode, boolean useSystemLibraryPath=true) {
+    public UDPStreamer(String libraryName, String mode, boolean useSystemLibraryPath) {
         System.loadLibrary(libraryName);
         if (mode.equals("client")) {
             this.mode = 0;
@@ -136,12 +136,12 @@ public class UDPStreamer {
                        int encodeQuality,
                        int frameWidth,
                        int frameHeight,
-                       boolean useSystemLibraryPath=true) {
+                       boolean useSystemLibraryPath) {
         System.loadLibrary(libraryName);
         _n_init_client(serverAddress, serverPort, cameraNumber, encodeQuality, frameWidth, frameHeight);
     }
 
-    public UDPStreamer(String libraryName, short portOfThisServer, boolean useSystemLibraryPath=true) {
+    public UDPStreamer(String libraryName, short portOfThisServer, boolean useSystemLibraryPath) {
         System.loadLibrary(libraryName);
         _n_init_server(portOfThisServer);
     }
