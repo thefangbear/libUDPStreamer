@@ -12,10 +12,11 @@
 //========= INCLUDE ==============
 #include "opencv2/opencv.hpp"
 #include "PracticalSocket.h" // For UDPSocket and SocketException
-#include "java/in_derros_jni_UDPStreamer.h"
+#include "java/in_derros_jni_UDPStreamer.h" // JNI Implementation
+#include "lz4.h" // LZ4 C++ Library
 #include <iostream>          // For cout and cerr
 #include <cstdlib>           // For atoi()
-
+#include <memory>            // for unique_ptr
 //========= CONFIG ===============
 #define FRAME_HEIGHT 720
 #define FRAME_WIDTH 1280
@@ -38,7 +39,7 @@
 
 enum {
     // default settings
-            eDefaultCameraNumber = 0,
+    eDefaultCameraNumber = 0,
     eDefaultFrameWidth = 1280,
     eDefaultFrameHeight = 720,
     ePacketSize = 4096,
@@ -46,7 +47,15 @@ enum {
     eBufferLength = 65540
 };
 
-void initialize(int);
+class LZ4Compress {
+public:
+    LZ4Compress(std::vector<unsigned char> data);
+    std::vector<unsigned char> Compress();
+    std::vector<unsigned char> Decompress(unsigned int originalSize);
+private:
+    std::vector<unsigned char> data;
+};
+
 class Server {
 public:
     Server(unsigned short);
@@ -62,6 +71,7 @@ private:
     int recvMsgSize; // Size of received message
     unsigned short serverPort; // Port of datagram source
     UDPSocket serverSocket;
+    cv::Mat decompress(std::vector<unsigned char>);
 };
 
 class Client {
@@ -88,5 +98,7 @@ private:
     std::vector<unsigned char> compress(cv::Mat m);
 
 };
+
+
 
 #endif // UDPSTREAMER_H

@@ -11,6 +11,38 @@
 using namespace cv;
 using namespace std;
 
+LZ4Compress::LZ4Compress(std::vector<unsigned char> data) : data(data) {}
+vector<unsigned char> LZ4Compress::Compress() {
+    vector<unsigned char> uncompressedData = this->data;
+    allocator<unsigned char> bufferAllocator;
+    unique_ptr<unsigned char> dataBuffer = bufferAllocator.allocate(uncompressedData.size());
+
+    int compressedSize = LZ4_compress_default((char *) uncompressedData.data(),
+                         (char *) dataBuffer.get(),
+                         (int) uncompressedData.size(),
+                         (int) uncompressedData.size());
+    if(compressedSize == -1) {
+        throw Exception();
+        return NULL;
+    }
+    vector<unsigned char> compressedData((unsigned int) compressedSize);
+    for(unsigned int i =0; i < compressedSize; i++) {
+        compressedData[i] = dataBuffer.get()[i];
+    }
+    return compressedData;
+}
+
+vector<unsigned char> LZ4Compress::Decompress(unsigned int originalSize) {
+    vector<unsigned char> compressedData = this->data;
+    unique_ptr<unsigned char> buffer = allocator<unsigned char>().allocate(originalSize);
+    LZ4_decompress_fast((char *)compressedData.data(), (char *) buffer.get(), originalSize);
+    vector<unsigned char> uncompressedData(originalSize);
+    for(int i = 0; i < originalSize; i++ ) {
+        uncompressedData[i] = buffer.get()[i];
+    }
+    return uncompressedData;
+}
+
 Server::Server(unsigned short serverPort)
         : serverPort(serverPort), serverSocket(serverPort) {}
 
@@ -47,8 +79,6 @@ void Server::Show(Mat &m) {
     imshow("server image window", m);
 }
 
-void debug(string s) { cout << s << endl; }
-
 void Server::ShowReceiveBlocking() {
 
     cout << "Entered ShowReceiveBlocking()\n";
@@ -57,9 +87,6 @@ void Server::ShowReceiveBlocking() {
 
     namedWindow("recv", CV_WINDOW_AUTOSIZE);
     try {
-
-        debug("inside try");
-
         UDPSocket sock(servPort);
 
         char buffer[BUF_LEN]; // Buffer for echo string
@@ -73,16 +100,10 @@ void Server::ShowReceiveBlocking() {
 #pragma clang diagnostic ignored "-Wmissing-noreturn"
         while (1) {
             // Block until receive message from a client
-
-            debug("inside while");
-
             do {
                 recvMsgSize = sock.recvFrom(buffer, BUF_LEN, sourceAddress, sourcePort);
             } while (recvMsgSize > sizeof(int));
             int total_pack = ((int *) buffer)[0];
-
-            debug("received total_pack");
-
             cout << "expecting length of packs:" << total_pack << endl;
             char *longbuf = new char[PACK_SIZE * total_pack];
             for (int i = 0; i < total_pack; i++) {
@@ -158,7 +179,7 @@ vector<unsigned char> Client::compress(cv::Mat m) {
 
     vector<uchar> encoded_image;
     vector<int> compression_params;
-    compression_params.push_back(CV_IMWRITE_JPEG_QUALITY);
+    compression_params.push_back((int &&) CV_IMWRITE_JPEG_QUALITY);
     compression_params.push_back(jpeg_quality);
     imencode(".jpg", m, encoded_image, compression_params);
     return encoded_image;

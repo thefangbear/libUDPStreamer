@@ -1,0 +1,3 @@
+/home/alex/Projects/udp-img-lib/releases/x86_64_release/CMakeFiles/edit_cache.dir
+/home/alex/Projects/udp-img-lib/releases/x86_64_release/CMakeFiles/rebuild_cache.dir
+/home/alex/Projects/udp-img-lib/releases/x86_64_release/CMakeFiles/UDPStreamer.dir
