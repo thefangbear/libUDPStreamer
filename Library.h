@@ -54,6 +54,7 @@ public:
     std::vector<unsigned char> Decompress(unsigned int originalSize);
 private:
     std::vector<unsigned char> data;
+    int getCompressedDataSize(int uncompressedDataSize);
 };
 
 class Server {

@@ -12,10 +12,16 @@ using namespace cv;
 using namespace std;
 
 LZ4Compress::LZ4Compress(std::vector<unsigned char> data) : data(data) {}
+
+int LZ4Compress::getCompressedDataSize(int uncompressedDataSize) {
+    return LZ4_compressBound((int) uncompressedDataSize);
+}
+
 vector<unsigned char> LZ4Compress::Compress() {
     vector<unsigned char> uncompressedData = this->data;
     allocator<unsigned char> bufferAllocator;
-    unique_ptr<unsigned char> dataBuffer = bufferAllocator.allocate(uncompressedData.size());
+    unique_ptr<unsigned char> dataBuffer =
+            bufferAllocator.allocate((unsigned long) this->getCompressedDataSize((int)uncompressedData.size()));
 
     int compressedSize = LZ4_compress_default((char *) uncompressedData.data(),
                          (char *) dataBuffer.get(),
