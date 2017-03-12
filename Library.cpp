@@ -11,6 +11,7 @@
 using namespace cv;
 using namespace std;
 
+#if 0
 LZ4Compress::LZ4Compress(std::vector<unsigned char> data) : data(data) {}
 
 int LZ4Compress::getCompressedDataSize(int uncompressedDataSize) {
@@ -48,15 +49,16 @@ vector<unsigned char> LZ4Compress::Decompress(unsigned int originalSize) {
     }
     return uncompressedData;
 }
+#endif
 
 Server::Server(unsigned short serverPort)
         : serverPort(serverPort), serverSocket(serverPort) {}
-/*todo
+#if 0
 cv::Mat Server::decompress(std::vector<unsigned char> compressedData, int originalSize) {
     LZ4Compress c(compressedData);
     vector<unsigned char> c.Decompress(originalSize);
 }
-*/
+#endif
 Mat Server::Receive() {
     string sourceAddress;
     unsigned short sourcePort;
