@@ -9,31 +9,5 @@ Please read our excellent [Java API Documentation and tutorial](https://github.c
 
 A Maven release is available (Thanks to Roobotics) at https://github.com/Roobotics-FRC/RooMaven. The current version is 0.2.1.
 
-## Author
-The library is originally written by [chenxiaoqino](//github.com/chenxiaoqino) but later revised to add JNI, multiple new classes, and restructured by Alex Fang.
-
 ## License
 Licensed under the MIT License.
-
-<hr>
-
-# ORIGINAL README
-The readme below is exerpted from chenxiaoqino's README for his C++ application:
-
-## UDP Live Image Streaming
-
-This project is inspired by https://www.cs.utexas.edu/~teammco/misc/udp_video/ , where images are grabbed from camera on one machine and transfered to another machine via UDP, resulting in negligible latency.
-
-Parameters such as stream size or quality can be adjusted in `config.h` before re-compile the program.
-
-### Grabbing
-
-The code grabs video stream from OpenCV's default input video device. To change input source, simply change the argument passed to `cv::VideoCapture()` accordingly.
-
-### Encoding
-
-To avoid latency altogether there is no video codec involved during this process. Every frame is individually encoded to `jpeg` format by OpenCV to drastically reduce the bandwidth consumption.
-
-If passing raw image is preferred, consider changing `jpeg` to `bmp`.
-
-<hr>
